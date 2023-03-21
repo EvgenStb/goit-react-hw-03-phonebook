@@ -17,13 +17,12 @@ class App extends Component {
   };
   componentDidMount (){
     let storageData = localStorage.getItem('contacts');
-    if (!storageData) {
-      return
+    if (storageData) {
+      this.setState({
+        contacts: JSON.parse(storageData),
+      }); 
     }
-    let dataToState = JSON.parse(storageData);
-    this.setState({
-      contacts: [...dataToState]
-    })
+    
   }
   componentDidUpdate (prevProps, prevState){
     if (prevState.contacts !== this.state.contacts) {
