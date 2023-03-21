@@ -17,10 +17,10 @@ class App extends Component {
   };
   componentDidMount (){
     let storageData = localStorage.getItem('contacts');
-    let dataToState = JSON.parse(storageData);
-    if (this.state.contacts.length) {
+    if (!storageData) {
       return
     }
+    let dataToState = JSON.parse(storageData);
     this.setState({
       contacts: [...dataToState]
     })
